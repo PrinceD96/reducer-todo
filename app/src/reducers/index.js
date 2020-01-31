@@ -1,4 +1,4 @@
-const todo = [
+export const todo = [
 	{
 		item: "Build a simple reducer",
 		completed: false,
@@ -7,7 +7,7 @@ const todo = [
 	{
 		item: "Set up state",
 		completed: false,
-		id: 0987654321
+		id: 9876543210
 	}
 ];
 
