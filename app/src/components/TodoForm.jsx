@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Form, Input, Button } from "semantic-ui-react";
 
 const TodoForm = props => {
 	const [newTodo, setNewTodo] = useState("");
@@ -14,16 +15,17 @@ const TodoForm = props => {
 	};
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<input
+		<Form onSubmit={handleSubmit}>
+			<Input
+				focus
 				onChange={handleChange}
 				type='text'
 				name='todo'
 				value={newTodo}
 				placeholder='...todo'
 			/>
-			<button>Add Todo</button>
-		</form>
+			<Button>Add Todo</Button>
+		</Form>
 	);
 };
 

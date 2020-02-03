@@ -1,6 +1,7 @@
 import React, { useReducer } from "react";
 import { todo, todoReducer } from "../reducers";
 import TodoForm from "./TodoForm";
+import { Grid, Button, Label, Icon } from "semantic-ui-react";
 
 const TodoList = () => {
 	const [state, dispatch] = useReducer(todoReducer, todo);
@@ -16,9 +17,9 @@ const TodoList = () => {
 		dispatch({ type: "TOGGLE_TODO", payload: id });
 	};
 
-	// const deleteTodo = id => {
-	// 	dispatch({ type: "DELETE_TODO", payload: id });
-	// };
+	const deleteTodo = id => {
+		dispatch({ type: "DELETE_TODO", payload: id });
+	};
 
 	const clearCompleted = () => {
 		dispatch({ type: "CLEAR_COMPLETED", payload: "" });
@@ -27,20 +28,24 @@ const TodoList = () => {
 	return (
 		<>
 			<TodoForm addTodo={addTodo} />
-			<div className='todo_list'>
-				{state.map((todo, idx) => (
-					<div
-						className='todo'
-						key={idx}
-						onClick={() => toggleTodo(todo.id)}
-						style={todo.completed ? { textDecoration: "line-through" } : {}}
-					>
-						<p>{todo.item}</p>
-						{/* <button onClick={() => deleteTodo(todo.id)}>X</button> */}
-					</div>
-				))}
-			</div>
-			<button onClick={clearCompleted}>Clear Completed</button>
+			<Grid columns={3}>
+				<Grid.Row>
+					{state.map((todo, idx) => (
+						<Grid.Column>
+							<Label
+								className='todo'
+								key={idx}
+								onClick={() => toggleTodo(todo.id)}
+								style={todo.completed ? { textDecoration: "line-through" } : {}}
+							>
+								{todo.item}
+								<Icon name='delete' onClick={() => deleteTodo(todo.id)} />
+							</Label>
+						</Grid.Column>
+					))}
+				</Grid.Row>
+			</Grid>
+			<Button onClick={clearCompleted}>Clear Completed</Button>
 		</>
 	);
 };
