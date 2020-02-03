@@ -12,11 +12,20 @@ const TodoList = () => {
 		});
 	};
 
+	const toggleTodo = id => {
+		dispatch({ type: "TOGGLE_TODO", payload: id });
+	};
+
 	return (
 		<div className='todo_list'>
 			<TodoForm addTodo={addTodo} />
 			{state.map((todo, idx) => (
-				<div className='todo' key={idx}>
+				<div
+					className='todo'
+					key={idx}
+					onClick={() => toggleTodo(todo.id)}
+					style={todo.completed ? { textDecoration: "line-through" } : {}}
+				>
 					<p>{todo.item}</p>
 				</div>
 			))}
