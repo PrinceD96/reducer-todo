@@ -1,12 +1,15 @@
 .App {
-	margin-top: 200px;
+	width: 800px;
+	border: 2px solid rebeccapurple;
+	margin: 200px auto;
 	display: flex;
-	justify-content: center;
+	flex-flow: column wrap;
 }
 
 .todo_list {
-	border: 2px solid rebeccapurple;
-	width: 400px;
+	border: 2px solid lightgreen;
+	width: 100%;
+	max-width: 600px;
 	height: 400px;
 	display: flex;
 	flex-flow: row wrap;
@@ -19,9 +22,16 @@
 	width: 48%;
 	height: 55px;
 	cursor: pointer;
+	display: flex;
 }
 
 .todo p {
 	padding-left: 5px;
 	color: darkcyan;
+	width: 80%;
+}
+
+.todo button {
+	width: 20%;
+	cursor: pointer;
 }

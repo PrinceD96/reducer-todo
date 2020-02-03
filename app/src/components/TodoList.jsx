@@ -16,20 +16,32 @@ const TodoList = () => {
 		dispatch({ type: "TOGGLE_TODO", payload: id });
 	};
 
+	// const deleteTodo = id => {
+	// 	dispatch({ type: "DELETE_TODO", payload: id });
+	// };
+
+	const clearCompleted = () => {
+		dispatch({ type: "CLEAR_COMPLETED", payload: "" });
+	};
+
 	return (
-		<div className='todo_list'>
+		<>
 			<TodoForm addTodo={addTodo} />
-			{state.map((todo, idx) => (
-				<div
-					className='todo'
-					key={idx}
-					onClick={() => toggleTodo(todo.id)}
-					style={todo.completed ? { textDecoration: "line-through" } : {}}
-				>
-					<p>{todo.item}</p>
-				</div>
-			))}
-		</div>
+			<div className='todo_list'>
+				{state.map((todo, idx) => (
+					<div
+						className='todo'
+						key={idx}
+						onClick={() => toggleTodo(todo.id)}
+						style={todo.completed ? { textDecoration: "line-through" } : {}}
+					>
+						<p>{todo.item}</p>
+						{/* <button onClick={() => deleteTodo(todo.id)}>X</button> */}
+					</div>
+				))}
+			</div>
+			<button onClick={clearCompleted}>Clear Completed</button>
+		</>
 	);
 };
 
