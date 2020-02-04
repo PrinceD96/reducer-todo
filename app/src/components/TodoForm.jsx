@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Input, Button } from "semantic-ui-react";
+import { Form, Input, Button, Icon } from "semantic-ui-react";
 
 const TodoForm = props => {
 	const [newTodo, setNewTodo] = useState("");
@@ -10,8 +10,10 @@ const TodoForm = props => {
 
 	const handleSubmit = e => {
 		e.preventDefault();
-		props.addTodo(newTodo);
-		setNewTodo("");
+		if (newTodo.length > 2) {
+			props.addTodo(newTodo);
+			setNewTodo("");
+		}
 	};
 
 	return (
@@ -24,7 +26,9 @@ const TodoForm = props => {
 				value={newTodo}
 				placeholder='...todo'
 			/>
-			<Button>Add Todo</Button>
+			<Button color='blue' onClick={() => props.addTodo}>
+				Add Todo
+			</Button>
 		</Form>
 	);
 };

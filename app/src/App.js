@@ -6,7 +6,7 @@ import { Header } from "semantic-ui-react";
 function App() {
 	return (
 		<>
-			<Header as='h1'>Todo App</Header>
+			<h1 className='title'>To-do App</h1>
 			<div className='App'>
 				<TodoList />
 			</div>

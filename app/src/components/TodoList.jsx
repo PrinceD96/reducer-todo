@@ -1,7 +1,7 @@
 import React, { useReducer } from "react";
 import { todo, todoReducer } from "../reducers";
 import TodoForm from "./TodoForm";
-import { Grid, Button, Label, Icon } from "semantic-ui-react";
+import { Grid, Button, Label, Icon, Checkbox } from "semantic-ui-react";
 
 const TodoList = () => {
 	const [state, dispatch] = useReducer(todoReducer, todo);
@@ -22,30 +22,32 @@ const TodoList = () => {
 	};
 
 	const clearCompleted = () => {
-		dispatch({ type: "CLEAR_COMPLETED", payload: "" });
+		dispatch({ type: "CLEAR_COMPLETED", payload: null });
 	};
 
 	return (
 		<>
-			<TodoForm addTodo={addTodo} />
-			<Grid columns={3}>
-				<Grid.Row>
-					{state.map((todo, idx) => (
-						<Grid.Column>
-							<Label
-								className='todo'
-								key={idx}
-								onClick={() => toggleTodo(todo.id)}
-								style={todo.completed ? { textDecoration: "line-through" } : {}}
-							>
-								{todo.item}
-								<Icon name='delete' onClick={() => deleteTodo(todo.id)} />
-							</Label>
-						</Grid.Column>
-					))}
-				</Grid.Row>
-			</Grid>
-			<Button onClick={clearCompleted}>Clear Completed</Button>
+			<div className='header'>
+				<TodoForm addTodo={addTodo} />
+				<Button color='red' className='clear_btn' onClick={clearCompleted}>
+					Clear Completed
+				</Button>
+			</div>
+			<div className='todo_list'>
+				{state.map((todo, idx) => (
+					<Checkbox
+						label={{ children: `${todo.item}` }}
+						className='todo'
+						color='black'
+						key={idx}
+						onClick={() => toggleTodo(todo.id)}
+						style={todo.completed ? { textDecoration: "line-through" } : {}}
+					>
+						{todo.item}
+						<Icon name='delete' onClick={() => deleteTodo(todo.id)} />
+					</Checkbox>
+				))}
+			</div>
 		</>
 	);
 };
