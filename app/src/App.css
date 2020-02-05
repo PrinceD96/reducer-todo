@@ -1,0 +1,71 @@
+body {
+	box-sizing: border-box;
+	display: flex;
+	flex-flow: column wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.title {
+	width: 150px;
+	margin: 20px auto;
+}
+
+.App {
+	width: 600px;
+	height: 400px;
+	padding: 10px;
+	box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+.todo_list {
+	/* border: 2px solid lightgreen; */
+	padding: 5px;
+	display: flex;
+	flex-flow: column wrap;
+	margin-top: 20px;
+}
+
+.todo {
+	cursor: pointer;
+	margin: 10px 0;
+}
+
+.todo p {
+	padding-left: 5px;
+	color: darkcyan;
+}
+
+.header {
+	/* border: 2px solid dodgerblue; */
+	display: flex;
+	width: 100%;
+	margin: 20px auto;
+	justify-content: center;
+	flex-flow: row wrap;
+}
+
+.clear_btn {
+	width: 150px;
+	min-width: 150px;
+}
+
+form {
+	/* border: 2px solid red; */
+	display: flex;
+	width: 70%;
+}
+
+form .input {
+	border: 2 px solid red;
+	width: 80%;
+	margin-right: 10px;
+}
+
+form button {
+	min-width: 105px;
+}
+
+form icon {
+	font-size: larger;
+}
